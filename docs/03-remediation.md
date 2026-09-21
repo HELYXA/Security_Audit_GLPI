@@ -18,7 +18,7 @@ Référence : [owasp.org/Top10](https://owasp.org/Top10/)
 
 ---
 
-## R-01 — Cross-Site Scripting (XSS)
+## R-01 - Cross-Site Scripting (XSS)
 
 **Constat** : un paramètre de requête (`searchText`) semble accepter du contenu HTML/JS non filtré.
 
@@ -27,16 +27,16 @@ Référence : [owasp.org/Top10](https://owasp.org/Top10/)
 - Mettre en place une **Content-Security-Policy (CSP)** restrictive côté serveur web.
 - Mettre à jour GLPI : les versions récentes corrigent les échappements manquants des versions anciennes.
 
-## R-02 — Injection SQL
+## R-02 - Injection SQL
 
 **Constat** : test de payload `' OR 1=1 --` et scan sqlmap sur des paramètres d'URL de formulaires.
 
 **Remédiation** :
-- Utiliser exclusivement des requêtes préparées / paramétrées (déjà le cas dans les versions récentes de GLPI — à vérifier sur la version testée).
+- Utiliser exclusivement des requêtes préparées / paramétrées (déjà le cas dans les versions récentes de GLPI, à vérifier sur la version testée).
 - Appliquer le principe de moindre privilège sur le compte MySQL/MariaDB utilisé par GLPI (pas de droits `FILE`, `DROP`, etc. si non nécessaires).
 - Mettre à jour vers la dernière version stable.
 
-## R-03 — Accès non authentifié à l'API REST
+## R-03 - Accès non authentifié à l'API REST
 
 **Constat** : les endpoints `apirest.php/User` et `apirest.php/Computer` répondent sans jeton d'authentification valide (à confirmer selon la réponse réellement observée).
 
@@ -45,15 +45,15 @@ Référence : [owasp.org/Top10](https://owasp.org/Top10/)
 - Désactiver l'API REST si elle n'est pas utilisée (`Configuration > Générale > API`).
 - Restreindre l'accès réseau à l'API aux seules IP autorisées (pare-feu applicatif).
 
-## R-04 — Exposition de fichiers internes
+## R-04 - Exposition de fichiers internes
 
 **Constat** : des chemins internes (`inc/autoload.php`, `front/setup.php`) sont accessibles directement en HTTP.
 
 **Remédiation** :
 - Configurer le serveur web (Apache/Nginx) pour bloquer l'accès direct aux répertoires `inc/`, `config/`.
-- S'assurer que `front/setup.php` (page d'installation) est bien désactivé/supprimé après l'installation initiale — c'est une pratique standard et une faille classique si elle reste accessible.
+- S'assurer que `front/setup.php` (page d'installation) est bien désactivé/supprimé après l'installation initiale, c'est une pratique standard et une faille classique si elle reste accessible.
 
-## R-05 — Robustesse de l'authentification
+## R-05 - Robustesse de l'authentification
 
 **Constat** : test de bruteforce via Hydra sur le formulaire de login.
 
@@ -62,7 +62,7 @@ Référence : [owasp.org/Top10](https://owasp.org/Top10/)
 - Imposer une politique de mot de passe fort (longueur, complexité).
 - Ajouter une authentification à deux facteurs (2FA) pour les comptes à privilèges.
 
-## R-06 — Permissions fichiers/configuration
+## R-06 - Permissions fichiers/configuration
 
 **Constat** : vérification des permissions de `config/` et de `config_db.php`.
 
@@ -70,7 +70,7 @@ Référence : [owasp.org/Top10](https://owasp.org/Top10/)
 - `config_db.php` ne doit être lisible que par l'utilisateur système exécutant le serveur web (`chmod 640`, propriétaire adapté).
 - S'assurer que le répertoire `config/` n'est pas accessible directement via une requête HTTP.
 
-## R-07 — Version obsolète / CVE connues
+## R-07 - Version obsolète / CVE connues
 
 **Constat** : version GLPI à comparer aux bases CVE/Exploit-DB.
 
@@ -78,7 +78,7 @@ Référence : [owasp.org/Top10](https://owasp.org/Top10/)
 - Mettre à jour GLPI vers la dernière version stable (voir [glpi-project.org](https://glpi-project.org/) et le [changelog officiel](https://github.com/glpi-project/glpi/releases)).
 - Mettre en place un suivi régulier des CVE publiées pour GLPI (veille sécurité).
 
-## R-08 — Hygiène du serveur hôte
+## R-08 - Hygiène du serveur hôte
 
 **Remédiation** :
 - Désactiver les services inutiles (`systemctl list-units --type=service`, puis `systemctl disable <service>`).
