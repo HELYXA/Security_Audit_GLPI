@@ -1,4 +1,4 @@
-# Audit de sécurité — GLPI (labo isolé)
+# Audit de sécurité - GLPI (labo isolé)
 
 Projet de pentest réalisé dans un environnement de test isolé (Kali Linux attaquant une VM GLPI dédiée, réseau local `192.168.56.0/24`), dans le cadre de ma formation Bachelor Cybersécurité (alternance).
 
@@ -30,7 +30,7 @@ L'audit suit une démarche en 6 phases, détaillée dans [`docs/01-methodologie.
 
 ## Rapport
 
-Le rapport — vecteurs de test couverts, mapping CWE et MITRE ATT&CK, format de fiche de vulnérabilité, recommandations — est dans [`docs/02-rapport-audit.md`](docs/02-rapport-audit.md). Les résultats bruts de ce premier run (sorties de scan, scores CVSS précis) n'ont pas été conservés ; ce document sert de gabarit réutilisable pour un audit complet.
+Le rapport (vecteurs de test couverts, mapping CWE et MITRE ATT&CK, format de fiche de vulnérabilité, recommandations) est dans [`docs/02-rapport-audit.md`](docs/02-rapport-audit.md). Les résultats bruts de ce premier run (sorties de scan, scores CVSS précis) n'ont pas été conservés ; ce document sert de gabarit réutilisable pour un audit complet.
 
 Les fiches de remédiation par catégorie de vulnérabilité sont dans [`docs/03-remediation.md`](docs/03-remediation.md).
 
@@ -46,7 +46,3 @@ Les fiches de remédiation par catégorie de vulnérabilité sont dans [`docs/03
 ## Avertissement
 
 Ce dépôt est un travail pédagogique. Il ne contient aucune donnée réelle, aucun identifiant, aucune information permettant d'identifier un système en production.
-
-## Auteur
-
-Hailey — Bachelor Cybersécurité (alternance), spécialisation visée SOC/CTI.
